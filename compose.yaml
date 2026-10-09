@@ -1,6 +1,6 @@
 services:
   portfolio:
-    build: .
+   image: karthi271/devops-portfolio:latest
     ports:
       - "8088:80"
     restart: unless-stopped
