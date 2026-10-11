@@ -6,6 +6,20 @@ pipeline {
     }
 
     stages {
+        stage('Terraform Validate') {
+    steps {
+        sh 'terraform fmt -check'
+        sh 'terraform init -input=false -backend-config="path=/var/lib/jenkins/terraform-state/terraform.tfstate"'
+        sh 'terraform validate'
+        }
+    }
+        stage('Terraform Plan Test') {
+    steps {
+        withEnv(['TF_VAR_docker_host=unix:///var/run/docker.sock']) {
+            sh 'terraform plan -input=false -var="image_tag=latest" -var="external_port=8092"'
+        }
+          }
+    }
         stage('Build') {
             steps {
                 sh 'docker build -t karthi271/devops-portfolio:latest .'
