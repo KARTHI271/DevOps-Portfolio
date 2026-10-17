@@ -1,650 +1,1950 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Karthi S.V. is a DevOps-focused learner building practical skills in automation, containers, CI/CD, and cloud infrastructure.">
-  <title>Karthi S.V. | DevOps Portfolio</title>
+  <meta name="description" content="Karthi S.V. - DevOps & Cloud Infrastructure Engineer. Specializing in Kubernetes (EKS), Terraform IaC, Docker, Jenkins CI/CD, and AWS Cloud Architecture.">
+  <meta name="keywords" content="DevOps, Cloud Engineer, Kubernetes, Docker, Terraform, AWS, Jenkins, CI/CD, Linux, Karthi S V">
+  <meta name="author" content="Karthi S V">
+  <title>Karthi S V | DevOps & Cloud Infrastructure Engineer</title>
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       color-scheme: dark;
-      --bg: #07161e;
-      --bg-elevated: #0d1f2a;
-      --panel: rgba(19, 36, 45, 0.9);
-      --panel-strong: #122a34;
-      --text: #edf8ff;
-      --muted: #b8ced8;
-      --soft: #81b7be;
-      --accent: #6ee7c9;
-      --accent-strong: #38c6a5;
-      --line: rgba(123, 164, 176, 0.25);
-      --shadow: 0 25px 50px rgba(0, 0, 0, 0.28);
-      --radius: 20px;
+      --bg-base: #06090e;
+      --bg-surface: #0c121d;
+      --bg-card: rgba(15, 23, 38, 0.75);
+      --bg-card-hover: rgba(22, 34, 56, 0.85);
+      --bg-glass: rgba(12, 18, 29, 0.82);
+      
+      --border-subtle: rgba(148, 163, 184, 0.12);
+      --border-glow: rgba(56, 189, 248, 0.35);
+      --border-bright: rgba(0, 245, 212, 0.4);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-soft: #64748b;
+      
+      /* Vibrant Cloud/DevOps Neon Accents */
+      --cyan: #00f5d4;
+      --cyan-glow: rgba(0, 245, 212, 0.28);
+      --blue: #38bdf8;
+      --blue-glow: rgba(56, 189, 248, 0.25);
+      --indigo: #818cf8;
+      --violet: #a855f7;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      
+      --gradient-brand: linear-gradient(135deg, #00f5d4 0%, #38bdf8 50%, #818cf8 100%);
+      --gradient-card: linear-gradient(180deg, rgba(22, 34, 56, 0.6) 0%, rgba(10, 16, 28, 0.85) 100%);
+      --gradient-btn: linear-gradient(135deg, #00f5d4 0%, #0284c7 100%);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(56, 189, 248, 0.15);
+      --shadow-glow: 0 0 30px rgba(0, 245, 212, 0.22);
+      
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font: 16px/1.7 "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(110, 231, 201, 0.14), transparent 25%),
-        radial-gradient(circle at bottom right, rgba(72, 145, 186, 0.18), transparent 28%),
-        var(--bg);
-      color: var(--text);
+      padding: 0;
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    img { max-width: 100%; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Glow */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -150px;
+      left: 15%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.08) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 70%);
+      filter: blur(80px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: 5%;
+      right: 10%;
+      width: 750px;
+      height: 750px;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.07) 0%, rgba(168, 85, 247, 0.03) 60%, transparent 75%);
+      filter: blur(100px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Grid overlay for tech/engineering feel */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at 50% 30%, black 40%, transparent 80%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-main);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    a:hover {
+      color: var(--blue);
+    }
+
+    code, pre, .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
 
     .container {
-      width: min(1120px, 92%);
+      width: min(1200px, 92%);
       margin: 0 auto;
     }
 
+    /* Top Navigation */
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(12px);
-      background: rgba(7, 22, 30, 0.8);
-      border-bottom: 1px solid var(--line);
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: var(--transition);
     }
 
-    .nav {
+    .topbar .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 72px;
-      gap: 20px;
+      min-height: 74px;
     }
 
     .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.45rem;
       font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: none;
-      font-size: 1.8rem;
-      color: var(--text);
-      line-height: 1;
+      color: var(--text-main);
+      letter-spacing: -0.03em;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: var(--gradient-brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #03151e;
+      font-weight: 900;
+      font-size: 1.1rem;
+      box-shadow: 0 0 16px var(--cyan-glow);
     }
 
     .nav-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.96rem;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
     }
 
-    .nav-links a { color: var(--muted); }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 6px 0;
+      position: relative;
+    }
 
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-main);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--gradient-brand);
+      transition: width 0.25s ease;
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.72rem 1.4rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--gradient-btn);
+      color: #041a22;
+      box-shadow: 0 8px 24px var(--cyan-glow);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      color: #021217;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 245, 212, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.95rem;
+      font-size: 0.82rem;
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 88px 0 56px;
+      padding: 90px 0 60px;
+      position: relative;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
-      gap: 36px;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 48px;
       align-items: center;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-      color: var(--accent);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.76rem;
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.8rem, 6vw, 5.2rem);
-      line-height: 1.02;
-      letter-spacing: -0.06em;
-    }
-
-    .lead {
-      max-width: 640px;
-      font-size: 1.12rem;
-      color: var(--muted);
-      margin: 0 0 28px;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 30px;
-    }
-
-    .button {
+    .status-badge {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      padding: 0.9rem 1.4rem;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .button:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .button.primary {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
-      color: #052e29;
-      box-shadow: 0 18px 30px rgba(56, 198, 165, 0.26);
-    }
-
-    .button.secondary {
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.02);
-      color: var(--text);
-    }
-
-    .mini-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .mini-stats strong {
-      display: block;
-      color: var(--text);
-      font-size: 1.4rem;
-      margin-bottom: 4px;
-    }
-
-    .profile-card {
-      background: linear-gradient(180deg, rgba(23, 42, 53, 0.94), rgba(12, 24, 32, 0.98));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .profile-card .badge {
-      display: inline-block;
-      background: rgba(110, 231, 201, 0.12);
-      border: 1px solid rgba(110, 231, 201, 0.35);
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(0, 245, 212, 0.08);
+      border: 1px solid rgba(0, 245, 212, 0.25);
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
       text-transform: uppercase;
-      margin-bottom: 16px;
     }
 
-    .profile-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.5rem;
-    }
-
-    .profile-card ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      color: var(--muted);
-    }
-
-    .profile-card li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      padding: 12px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .profile-card li:first-child { border-top: none; }
-
-    .dot {
-      width: 9px;
-      height: 9px;
+    .status-pulse {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      margin-top: 0.55rem;
-      background: var(--accent);
-      box-shadow: 0 0 16px rgba(110, 231, 201, 0.8);
-      flex-shrink: 0;
+      background: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan);
+      animation: pulse 2s infinite;
     }
 
-    section {
-      padding: 24px 0 30px;
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 245, 212, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 245, 212, 0); }
     }
 
-    .section-header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 20px;
+    .hero h1 {
+      font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+      font-weight: 800;
       margin-bottom: 20px;
+      line-height: 1.08;
     }
 
-    h2 {
-      margin: 0;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      letter-spacing: -0.04em;
+    .hero-gradient-text {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
     }
 
-    .section-tag {
-      color: var(--muted);
-      font-size: 0.92rem;
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      max-width: 620px;
+      line-height: 1.7;
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 1.2rem;
-    }
-
-    .card p, .card li {
-      color: var(--muted);
-    }
-
-    .tag-list {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      list-style: none;
-      padding: 0;
-      margin: 18px 0 0;
+      gap: 16px;
+      margin-bottom: 40px;
     }
 
-    .tag-list li {
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(110, 231, 201, 0.08);
-      border: 1px solid rgba(110, 231, 201, 0.2);
-      color: var(--text);
-      font-size: 0.85rem;
-    }
-
-    .project-grid {
+    /* Metric Badges */
+    .metrics-bar {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-subtle);
     }
 
-    .project {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
+    .metric-item {
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      box-shadow: var(--shadow);
     }
 
-    .project-top {
+    .metric-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-main);
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
+      align-items: baseline;
+      gap: 2px;
     }
 
-    .status {
-      border-radius: 999px;
-      background: rgba(110, 231, 201, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(110, 231, 201, 0.3);
-      font-size: 0.74rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 6px 10px;
-      font-weight: 700;
-    }
-
-    .project h3 {
-      margin: 0;
+    .metric-accent {
+      color: var(--cyan);
       font-size: 1.3rem;
     }
 
-    .project ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      color: var(--muted);
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
     }
 
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
+    /* Hero Interactive Terminal / Pipeline Card */
+    .hero-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
     }
 
-    .timeline-item {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 20px 18px;
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-brand);
     }
 
-    .timeline-item .phase {
-      display: inline-block;
-      margin-bottom: 10px;
+    .card-topbar {
+      background: rgba(8, 12, 20, 0.9);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .window-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .terminal-title {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .terminal-tabs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-soft);
+      font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .terminal-tab-btn.active,
+    .terminal-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--cyan);
+    }
+
+    .terminal-body {
+      padding: 20px;
+      background: #070b12;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.83rem;
+      min-height: 280px;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    .t-prompt {
+      color: var(--cyan);
+      user-select: none;
+    }
+    .t-cmd {
+      color: #f8fafc;
+      font-weight: 600;
+    }
+    .t-res {
+      color: #94a3b8;
+      margin: 8px 0 16px;
+      line-height: 1.5;
+    }
+    .t-success {
+      color: #10b981;
+    }
+    .t-warn {
+      color: #f59e0b;
+    }
+    .t-info {
+      color: #38bdf8;
+    }
+
+    /* Section Structure */
+    section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      color: var(--cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+    }
+
+    /* Interactive Pipeline Simulator */
+    .pipeline-wrapper {
+      background: var(--gradient-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pipeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .pipeline-title-group h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pipeline-stages {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      position: relative;
+    }
+
+    .stage-card {
+      background: rgba(11, 18, 30, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .stage-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stage-card.active-stage {
+      border-color: var(--cyan);
+      box-shadow: 0 0 20px var(--cyan-glow);
+    }
+
+    .stage-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--text-soft);
+    }
+
+    .stage-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .stage-tool {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--blue);
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .stage-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: #10b981;
+      font-weight: 600;
+      margin-top: auto;
+    }
+
+    .stage-status svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Projects Filter & Grid */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .filter-btn.active {
+      background: var(--gradient-btn);
+      color: #031c24;
+      border-color: transparent;
+      box-shadow: 0 4px 16px var(--cyan-glow);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: var(--transition);
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+
+    .project-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .project-badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .p-category {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--blue);
+    }
+
+    .p-category.terraform {
+      background: rgba(168, 85, 247, 0.12);
+      border-color: rgba(168, 85, 247, 0.35);
+      color: #c084fc;
+    }
+
+    .p-category.k8s {
+      background: rgba(0, 245, 212, 0.12);
+      border-color: rgba(0, 245, 212, 0.35);
+      color: var(--cyan);
+    }
+
+    .p-category.cicd {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.35);
+      color: var(--amber);
+    }
+
+    .github-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    .github-link-icon:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      transform: scale(1.08);
+      border-color: var(--cyan);
+    }
+
+    .project-card h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-main);
+    }
+
+    .project-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .project-highlights {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-highlights li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+
+    .bullet-check {
+      color: var(--cyan);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .tech-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+    }
+
+    /* Skills Grid Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .skill-category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: var(--transition);
+    }
+
+    .skill-category-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skill-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .skill-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+    }
+
+    .skill-cat-title {
+      font-size: 1.25rem;
       font-weight: 700;
     }
 
-    .timeline-item h3 {
-      margin: 0 0 8px;
-      font-size: 1.1rem;
-    }
-
-    .timeline-item p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .cta-panel {
-      background: linear-gradient(135deg, rgba(21, 39, 47, 1), rgba(12, 22, 29, 1));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 30px 24px;
+    .skill-list {
       display: flex;
       flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .skill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .skill-badge:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 245, 212, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .skill-badge .dot-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+    }
+
+    /* Education & Certifications */
+    .edu-card {
+      background: linear-gradient(135deg, rgba(16, 26, 44, 0.9) 0%, rgba(9, 14, 24, 0.95) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 34px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .edu-icon-box {
+      width: 72px;
+      height: 72px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 245, 212, 0.1);
+      border: 1px solid rgba(0, 245, 212, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+    }
+
+    .edu-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .edu-meta {
+      color: var(--cyan);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .edu-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 800px;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: radial-gradient(circle at 10% 20%, rgba(0, 245, 212, 0.15) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.15) 0%, transparent 45%),
+                  var(--bg-surface);
+      border: 1px solid var(--border-bright);
+      border-radius: var(--radius-lg);
+      padding: 50px 40px;
+      display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 18px;
-      box-shadow: var(--shadow);
+      flex-wrap: wrap;
+      gap: 24px;
+      box-shadow: var(--shadow-glow);
+      position: relative;
     }
 
-    .cta-panel h3 {
-      margin: 0 0 8px;
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      letter-spacing: -0.04em;
+    .cta-banner h3 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: 10px;
     }
 
-    .cta-panel p {
-      margin: 0;
-      color: var(--muted);
+    .cta-banner p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 580px;
     }
 
+    /* Footer */
     footer {
-      padding: 34px 0 48px;
-      color: var(--muted);
+      padding: 40px 0 60px;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.9rem;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid,
-      .card-grid,
-      .project-grid,
-      .timeline {
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .projects-grid {
         grid-template-columns: 1fr;
       }
-
-      .profile-card {
-        margin-top: 12px;
+      .skills-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .pipeline-stages {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
-    @media (max-width: 620px) {
-      .nav {
+    @media (max-width: 768px) {
+      .topbar .nav {
         flex-direction: column;
-        align-items: flex-start;
-        padding: 18px 0;
+        padding: 16px 0;
+        gap: 14px;
       }
-
       .nav-links {
-        gap: 10px 14px;
+        gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
-
-      .hero {
-        padding-top: 60px;
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
       }
-
-      .section-header {
-        align-items: flex-start;
-        flex-direction: column;
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .pipeline-stages {
+        grid-template-columns: 1fr;
+      }
+      .edu-card {
+        grid-template-columns: 1fr;
+      }
+      .cta-banner {
+        padding: 30px 24px;
       }
     }
   </style>
 </head>
 <body id="top">
-  <div class="topbar">
+  <div class="bg-grid"></div>
+
+  <!-- Navigation -->
+  <header class="topbar">
     <div class="container nav">
-      <div class="brand">Karthi S V</div>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#journey">Journey</a>
-        <a href="#contact">Contact</a>
+      <a href="#top" class="brand" aria-label="Karthi S V - Homepage">
+        <div class="brand-icon">K</div>
+        <span>Karthi S V</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#pipeline">CI/CD Pipeline</a></li>
+          <li><a href="#projects">DevOps Projects</a></li>
+          <li><a href="#skills">Skills & Tools</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-sm" href="https://github.com/KARTHI271" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub Profile
+        </a>
+      </div>
     </div>
-  </div>
+  </header>
 
   <main class="container">
-    <header class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
       <div class="hero-grid">
         <div>
-          <div class="eyebrow">DevOps engineer in training</div>
-          <h1>Building reliable systems from the ground up.</h1>
-          <p class="lead">
-            I’m a DevOps-focused learner passionate about Linux, automation, containers, CI/CD,
-            and cloud infrastructure. I turn home lab experimentation into real, practical skills that
-            translate directly into modern engineering teams.
-          </p>
-          <div class="cta-row">
-            <a class="button primary" href="https://github.com/KARTHI271" target="_blank" rel="noreferrer">View GitHub</a>
-            <a class="button secondary" href="#projects">Explore projects</a>
+          <div class="status-badge">
+            <span class="status-pulse"></span>
+            Cloud & DevOps Engineer • AWS • K8s • IaC
           </div>
-          <div class="mini-stats">
-            <div>
-              <strong>Hands-on</strong>
-              Home lab driven learning
+
+          <h1>
+            Automating Cloud Infrastructure & 
+            <span class="hero-gradient-text">Continuous Delivery</span>
+          </h1>
+
+          <p class="hero-lead">
+            Electronics and Communication Engineering graduate specializing in Cloud Architecture, Kubernetes orchestration (EKS), Terraform Infrastructure as Code (IaC), Docker containerization, and automated Jenkins CI/CD pipelines.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">
+              Explore DevOps Projects
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a class="btn btn-secondary" href="https://github.com/KARTHI271" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              View GitHub Repositories
+            </a>
+          </div>
+
+          <div class="metrics-bar">
+            <div class="metric-item">
+              <div class="metric-value">20<span class="metric-accent">+</span></div>
+              <div class="metric-label">DevOps Tasks</div>
             </div>
-            <div>
-              <strong>Core</strong>
-              Linux + Docker + CI/CD
+            <div class="metric-item">
+              <div class="metric-value">6<span class="metric-accent">+</span></div>
+              <div class="metric-label">GitHub Repos</div>
             </div>
-            <div>
-              <strong>Goal</strong>
-              Cloud-native automation
+            <div class="metric-item">
+              <div class="metric-value">100<span class="metric-accent">%</span></div>
+              <div class="metric-label">IaC Automated</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">EKS<span class="metric-accent">/AWS</span></div>
+              <div class="metric-label">Cloud Target</div>
             </div>
           </div>
         </div>
 
-        <aside class="profile-card" aria-label="Profile summary">
-          <div class="badge">Currently focused on</div>
-          <h3>DevOps foundations</h3>
-          <ul>
-            <li><span class="dot"></span><span>Linux server administration, networking, and scripting.</span></li>
-            <li><span class="dot"></span><span>Docker containerization and deployment workflows.</span></li>
-            <li><span class="dot"></span><span>CI/CD pipelines using GitHub, Jenkins, and automation tooling.</span></li>
-            <li><span class="dot"></span><span>Cloud infrastructure, IaC, and scalable platform practices.</span></li>
-          </ul>
+        <!-- Interactive DevOps CLI Widget -->
+        <aside class="hero-card" aria-label="DevOps Live Terminal Simulation">
+          <div class="card-topbar">
+            <div class="window-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="terminal-title">karthi@aws-cloud-bastion:~</div>
+            <div class="terminal-tabs">
+              <button class="terminal-tab-btn active" onclick="switchTerminal('k8s')">kubectl</button>
+              <button class="terminal-tab-btn" onclick="switchTerminal('tf')">terraform</button>
+              <button class="terminal-tab-btn" onclick="switchTerminal('docker')">docker</button>
+            </div>
+          </div>
+
+          <div class="terminal-body" id="terminal-content">
+            <!-- Dynamic terminal content populated via JS -->
+            <p><span class="t-prompt">karthi@eks-cluster:~$</span> <span class="t-cmd">kubectl get pods,svc -n production</span></p>
+            <div class="t-res">
+NAME                               READY   STATUS    RESTARTS   AGE<br>
+pod/trend-store-789cfb4d-9v2x      1/1     <span class="t-success">Running</span>   0          42m<br>
+pod/trend-store-789cfb4d-lp4w      1/1     <span class="t-success">Running</span>   0          42m<br>
+pod/mindtrack-app-54cbb6df-x82m    1/1     <span class="t-success">Running</span>   0          2h<br><br>
+NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP<br>
+service/trend-store-svc       <span class="t-info">LoadBalancer</span>   10.100.12.84    <span class="t-cyan">k8s-alb-84920.us-east-1.elb.amazonaws.com</span><br>
+service/mindtrack-svc         <span class="t-info">LoadBalancer</span>   10.100.88.19    <span class="t-cyan">k8s-alb-19402.us-east-1.elb.amazonaws.com</span>
+            </div>
+            <p><span class="t-prompt">karthi@eks-cluster:~$</span> <span class="t-cmd">kubectl get nodes</span></p>
+            <div class="t-res">
+NAME                                            STATUS   ROLES    AGE   VERSION<br>
+ip-10-0-1-142.ec2.internal                      <span class="t-success">Ready</span>    node     4d    v1.29.3-eks<br>
+ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</span>    node     4d    v1.29.3-eks
+            </div>
+          </div>
         </aside>
       </div>
-    </header>
+    </section>
 
+    <!-- About Section -->
     <section id="about">
       <div class="section-header">
-        <h2>About me</h2>
-        <div class="section-tag">Problem solver • learner • builder</div>
-      </div>
-      <div class="card">
-        <p>
-          I’m building a practical DevOps portfolio by combining real infrastructure work, learning projects,
-          and automation experiments. My focus is on understanding how systems run in production: version control,
-          deployment pipelines, container orchestration, reliability, and operational efficiency.
-        </p>
-        <p>
-          I enjoy turning theory into action—whether that means setting up a Raspberry Pi lab, automating a build
-          pipeline, or learning how infrastructure as code improves deployment consistency and resilience.
+        <span class="section-eyebrow">Engineering Philosophy</span>
+        <h2 class="section-title">Bridging Code, Cloud & Automation</h2>
+        <p class="section-subtitle">
+          I design robust, automated delivery pipelines that eliminate manual toil, shorten feedback loops, and enforce reproducibility across AWS cloud environments.
         </p>
       </div>
+
+      <div class="skills-grid">
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">Cloud Infrastructure (IaC)</h3>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:18px;">
+            Provisioning multi-region AWS environments (VPC, Subnets, Internet Gateways, Security Groups, EC2, EBS) using declarative Terraform modules.
+          </p>
+          <ul class="skill-list">
+            <li class="skill-badge"><span class="dot-indicator"></span>Terraform</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>AWS VPC & EC2</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>AWS EKS</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>EBS & Storage</li>
+          </ul>
+        </div>
+
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-icon-wrap" style="color:var(--blue); background:rgba(56, 189, 248, 0.1);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">Containers & Orchestration</h3>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:18px;">
+            Crafting lightweight multi-stage Dockerfiles, managing container image repositories on DockerHub, and orchestrating deployments & Load Balancer services on Kubernetes.
+          </p>
+          <ul class="skill-list">
+            <li class="skill-badge"><span class="dot-indicator"></span>Docker & Compose</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Kubernetes (k8s)</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Nginx Ingress</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>DockerHub</li>
+          </ul>
+        </div>
+
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-icon-wrap" style="color:var(--amber); background:rgba(245, 158, 11, 0.1);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">CI/CD & Automation</h3>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:18px;">
+            End-to-end automated pipelines with Jenkins declarative syntax, GitHub Webhooks, automated image tagging, and instant status notification delivery.
+          </p>
+          <ul class="skill-list">
+            <li class="skill-badge"><span class="dot-indicator"></span>Jenkins Pipelines</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>GitHub Webhooks</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Bash Automation</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>AWS CodeBuild</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section id="education">
+    <!-- Interactive Pipeline Simulation Section -->
+    <section id="pipeline">
       <div class="section-header">
-        <h2>Education</h2>
+        <span class="section-eyebrow">Continuous Integration & Delivery</span>
+        <h2 class="section-title">Automated Production Workflow</h2>
+        <p class="section-subtitle">
+          How code transitions seamlessly from local commit to an autoscaling Kubernetes cluster on AWS.
+        </p>
       </div>
-      <article class="card">
-        <h3>Bachelor’s degree in Electronics and Communication Engineering</h3>
-      </article>
+
+      <div class="pipeline-wrapper">
+        <div class="pipeline-header">
+          <div class="pipeline-title-group">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+              Live Architecture Pipeline: Trend Store & MindTrack
+            </h3>
+          </div>
+          <div>
+            <button class="btn btn-secondary btn-sm" onclick="runPipelineSimulation()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              Simulate CI/CD Run
+            </button>
+          </div>
+        </div>
+
+        <div class="pipeline-stages">
+          <div class="stage-card active-stage" id="stage-1">
+            <span class="stage-num">STAGE 01</span>
+            <div class="stage-name">Git Commit</div>
+            <span class="stage-tool">GitHub Webhook</span>
+            <div class="stage-status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Triggered
+            </div>
+          </div>
+
+          <div class="stage-card" id="stage-2">
+            <span class="stage-num">STAGE 02</span>
+            <div class="stage-name">CI Build & Test</div>
+            <span class="stage-tool">Jenkins / CodeBuild</span>
+            <div class="stage-status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Compiled
+            </div>
+          </div>
+
+          <div class="stage-card" id="stage-3">
+            <span class="stage-num">STAGE 03</span>
+            <div class="stage-name">Containerize</div>
+            <span class="stage-tool">DockerHub Push</span>
+            <div class="stage-status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Image Tagged
+            </div>
+          </div>
+
+          <div class="stage-card" id="stage-4">
+            <span class="stage-num">STAGE 04</span>
+            <div class="stage-name">Provision Infra</div>
+            <span class="stage-tool">Terraform AWS</span>
+            <div class="stage-status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              IaC Validated
+            </div>
+          </div>
+
+          <div class="stage-card" id="stage-5">
+            <span class="stage-num">STAGE 05</span>
+            <div class="stage-name">Rolling Deploy</div>
+            <span class="stage-tool">AWS EKS Cluster</span>
+            <div class="stage-status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              Zero Downtime
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="skills">
-      <div class="section-header">
-        <h2>Core skills</h2>
-        <div class="section-tag">Practical toolkit</div>
-      </div>
-      <div class="card-grid">
-        <article class="card">
-          <h3>Infrastructure</h3>
-          <p>Linux system administration, networking fundamentals, server setup, and infrastructure troubleshooting.</p>
-          <ul class="tag-list">
-            <li>Ubuntu</li>
-            <li>Linux</li>
-            <li>Networking</li>
-            <li>Shell</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Automation</h3>
-          <p>Scripts, pipelines, and repeatable workflows that reduce manual effort and improve deployment reliability.</p>
-          <ul class="tag-list">
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>Jenkins</li>
-            <li>Bash</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>Cloud & Containers</h3>
-          <p>Containerization, environment consistency, and the path toward scalable deployment patterns in cloud-native systems.</p>
-          <ul class="tag-list">
-            <li>Docker</li>
-            <li>Kubernetes</li>
-            <li>AWS</li>
-            <li>Terraform</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
+    <!-- Projects Section -->
     <section id="projects">
       <div class="section-header">
-        <h2>Project highlights</h2>
-        <div class="section-tag">Hands-on portfolio work</div>
+        <span class="section-eyebrow">Real Production Implementations</span>
+        <h2 class="section-title">DevOps & Cloud Projects</h2>
+        <p class="section-subtitle">
+          Real repositories pulled directly from GitHub (<a href="https://github.com/KARTHI271" target="_blank" rel="noopener noreferrer">@KARTHI271</a>), featuring complete source manifests, Dockerfiles, Jenkinsfiles, and Terraform scripts.
+        </p>
       </div>
-      <div class="project-grid">
-        <article class="project">
-          <div class="project-top">
-            <h3>Raspberry Pi DevOps Lab</h3>
-            <span class="status">Active</span>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterProjects('all')">All Repositories (8)</button>
+        <button class="filter-btn" onclick="filterProjects('cloud-iac')">Cloud & Terraform (3)</button>
+        <button class="filter-btn" onclick="filterProjects('k8s-docker')">Kubernetes & Containers (3)</button>
+        <button class="filter-btn" onclick="filterProjects('cicd-automation')">CI/CD & Automation (2)</button>
+      </div>
+
+      <div class="projects-grid">
+        
+        <!-- Project 1: Trend Store -->
+        <article class="project-card" data-category="cloud-iac k8s-docker cicd-automation">
+          <div class="project-header">
+            <div class="project-badge-group">
+              <span class="p-category terraform">Terraform</span>
+              <span class="p-category k8s">Kubernetes EKS</span>
+              <span class="p-category cicd">Jenkins CI/CD</span>
+            </div>
+            <a href="https://github.com/KARTHI271/DevOps-Project/tree/main/TREND-STORE" target="_blank" rel="noopener noreferrer" class="github-link-icon" title="View Source on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
           </div>
-          <p>Using a Raspberry Pi as a personal learning environment to build and test Linux, Docker, and automation workflows.</p>
-          <ul>
-            <li>Configured Ubuntu Server for self-hosted workloads.</li>
-            <li>Explored Docker-based services and container isolation.</li>
-            <li>Practiced networking and remote management in a real environment.</li>
+
+          <h3>TREND STORE — Enterprise CI/CD & IaC Pipeline</h3>
+          <p class="project-description">
+            Complete end-to-end DevOps automation suite. Created AWS custom VPC, subnets, and routing via Terraform; configured an automated Jenkins CI/CD pipeline pulling from GitHub; built and pushed Docker images to DockerHub (<code style="color:var(--cyan)">karthi271/trend-store</code>); and executed rolling updates to Amazon EKS exposed through AWS Load Balancers.
+          </p>
+
+          <ul class="project-highlights">
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Terraform IaC:</strong> Automated provisioning of VPC, public subnets, Internet Gateways, and Jenkins EC2 instance.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Jenkins CI/CD:</strong> Declarative pipeline handling checkout, Docker container build, test, and registry push.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Kubernetes Orchestration:</strong> Zero-downtime rolling deployments on Amazon EKS with AWS LoadBalancer DNS routing.</span>
+            </li>
           </ul>
+
+          <div class="tech-tags">
+            <span class="tech-pill">AWS EKS</span>
+            <span class="tech-pill">Terraform</span>
+            <span class="tech-pill">Jenkinsfile</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">DockerHub</span>
+            <span class="tech-pill">Nginx</span>
+          </div>
         </article>
 
-        <article class="project">
-          <div class="project-top">
-            <h3>Portfolio Deployment Pipeline</h3>
-            <span class="status">In progress</span>
+        <!-- Project 2: MindTrack -->
+        <article class="project-card" data-category="k8s-docker">
+          <div class="project-header">
+            <div class="project-badge-group">
+              <span class="p-category k8s">Kubernetes EKS</span>
+              <span class="p-category">AWS CodeBuild</span>
+              <span class="p-category">Docker</span>
+            </div>
+            <a href="https://github.com/KARTHI271/DevOps-Project/tree/main/MINDTRACK" target="_blank" rel="noopener noreferrer" class="github-link-icon" title="View Source on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
           </div>
-          <p>Building a deployment workflow for this portfolio to practice automation, versioning, and delivery pipelines.</p>
-          <ul>
-            <li>Connected GitHub and automation tooling for continuous delivery.</li>
-            <li>Learned how CI/CD improves release consistency.</li>
-            <li>Extended the project toward containerized deployment patterns.</li>
+
+          <h3>MINDTRACK — Containerized Cloud Microservice on EKS</h3>
+          <p class="project-description">
+            Multi-tier web application packaged into an optimized Docker container and deployed to an Amazon EKS cluster managed via <code style="color:var(--cyan)">eksctl</code>. Integrated with AWS CodeBuild (<code style="color:var(--cyan)">buildspec.yml</code>) and configured with Kubernetes LoadBalancer services for public DNS traffic distribution.
+          </p>
+
+          <ul class="project-highlights">
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>EKS Cluster Management:</strong> Node group provisioning, namespace isolation, and pod autoscaling with kubectl.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>AWS CodeBuild:</strong> Automated build specifications, artifact management, and container compilation.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Health Verification:</strong> Production health checks, readiness probes, and LoadBalancer DNS resolution.</span>
+            </li>
           </ul>
+
+          <div class="tech-tags">
+            <span class="tech-pill">Kubernetes</span>
+            <span class="tech-pill">AWS EKS</span>
+            <span class="tech-pill">eksctl</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">AWS CodeBuild</span>
+            <span class="tech-pill">kubectl</span>
+          </div>
         </article>
 
-        <article class="project">
-          <div class="project-top">
-            <h3>Cloud & IaC learning path</h3>
-            <span class="status">Planned</span>
+        <!-- Project 3: Multi-Region Terraform EC2 -->
+        <article class="project-card" data-category="cloud-iac">
+          <div class="project-header">
+            <div class="project-badge-group">
+              <span class="p-category terraform">Terraform</span>
+              <span class="p-category">AWS Multi-Region</span>
+              <span class="p-category">IaC</span>
+            </div>
+            <a href="https://github.com/KARTHI271/DEVOPS-LEARNING/tree/main/Multi-Region%20EC2%20Deployment%20%26%20Nginx%20Installation%20Using%20Terraform" target="_blank" rel="noopener noreferrer" class="github-link-icon" title="View Source on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
           </div>
-          <p>Preparing for cloud-native infrastructure with Infrastructure as Code and scalable deployment strategies.</p>
-          <ul>
-            <li>Study AWS services and best practices.</li>
-            <li>Practice Terraform for repeatable environments.</li>
-            <li>Move toward Kubernetes and monitoring concepts.</li>
+
+          <h3>Multi-Region AWS EC2 Infrastructure via Terraform</h3>
+          <p class="project-description">
+            Automated multi-region cloud deployment spanning <code style="color:var(--cyan)">ap-south-1</code> (Mumbai) and <code style="color:var(--cyan)">us-east-1</code> (N. Virginia). Developed modular HCL code leveraging provider aliases, automated security group ingress, and dynamic user-data bootstrap scripts to configure web services.
+          </p>
+
+          <ul class="project-highlights">
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Cross-Region Redundancy:</strong> Dual-provider Terraform configurations deploying synchronized servers across continents.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Automated Bootstrap:</strong> User-data scripting injecting automated Nginx installations and custom HTML landing pages.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>State Management:</strong> Terraform state lock, dependency graphs, and clean resource tear-down.</span>
+            </li>
           </ul>
+
+          <div class="tech-tags">
+            <span class="tech-pill">Terraform</span>
+            <span class="tech-pill">AWS EC2</span>
+            <span class="tech-pill">Multi-Region</span>
+            <span class="tech-pill">Security Groups</span>
+            <span class="tech-pill">Bash</span>
+          </div>
         </article>
+
+        <!-- Project 4: Jenkins Pipeline with Webhook -->
+        <article class="project-card" data-category="cicd-automation">
+          <div class="project-header">
+            <div class="project-badge-group">
+              <span class="p-category cicd">CI/CD Pipeline</span>
+              <span class="p-category">GitHub Webhook</span>
+              <span class="p-category">Notifications</span>
+            </div>
+            <a href="https://github.com/KARTHI271/DEVOPS-LEARNING/tree/main/Jenkins%20CICD%20Pipeline%20with%20GitHub%20Webhook%20%26%20Email%20Notification" target="_blank" rel="noopener noreferrer" class="github-link-icon" title="View Source on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+
+          <h3>Jenkins CI/CD Pipeline with GitHub Webhooks & Email Alerts</h3>
+          <p class="project-description">
+            Event-driven continuous integration pipeline configured on a dedicated Jenkins server. Employs GitHub push webhooks to automatically trigger test builds (<code style="color:var(--cyan)">build.sh</code>), generate artifact reports, and dispatch real-time SMTP email notifications with build status logs.
+          </p>
+
+          <ul class="project-highlights">
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Instant Event Triggers:</strong> Seamless GitHub payload parsing triggering instant parallel build steps.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Automated Testing:</strong> Shell script validation and syntax linting before progression to deploy.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>SMTP Alerting:</strong> Post-build failure and success notifications sent automatically to engineering team.</span>
+            </li>
+          </ul>
+
+          <div class="tech-tags">
+            <span class="tech-pill">Jenkins</span>
+            <span class="tech-pill">GitHub Webhooks</span>
+            <span class="tech-pill">Bash Automation</span>
+            <span class="tech-pill">SMTP Mailer</span>
+            <span class="tech-pill">CI/CD</span>
+          </div>
+        </article>
+
+        <!-- Project 5: Kubernetes EKS Nginx -->
+        <article class="project-card" data-category="k8s-docker">
+          <div class="project-header">
+            <div class="project-badge-group">
+              <span class="p-category k8s">Kubernetes EKS</span>
+              <span class="p-category">AWS LoadBalancer</span>
+            </div>
+            <a href="https://github.com/KARTHI271/DEVOPS-LEARNING/tree/main/Kubernetes%20EKS%20Cluster%20Deployment%20%26%20Nginx%20Application%20Exposure" target="_blank" rel="noopener noreferrer" class="github-link-icon" title="View Source on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+
+          <h3>EKS Cluster Deployment & Nginx LoadBalancer Exposure</h3>
+          <p class="project-description">
+            Production Kubernetes orchestration on Amazon Elastic Kubernetes Service. Managed pod replicasets, configured declarative manifests, exposed services via AWS Elastic Load Balancing, and inspected health metrics across worker nodes.
+          </p>
+
+          <ul class="project-highlights">
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Cluster Architecture:</strong> Control plane management with high-availability worker nodes in AWS.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Service Routing:</strong> Configured LoadBalancer services to bind AWS ALB endpoints to container pods.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Resilience:</strong> Fault tolerance verification via simulated pod termination and automatic replica regeneration.</span>
+            </li>
+          </ul>
+
+          <div class="tech-tags">
+            <span class="tech-pill">Kubernetes</span>
+            <span class="tech-pill">Amazon EKS</span>
+            <span class="tech-pill">AWS ALB</span>
+            <span class="tech-pill">kubectl</span>
+            <span class="tech-pill">YAML Manifests</span>
+          </div>
+        </article>
+
+        <!-- Project 6: Custom Nginx & Docker Compose -->
+        <article class="project-card" data-category="k8s-docker">
+          <div class="project-header">
+            <div class="project-badge-group">
+              <span class="p-category">Docker Compose</span>
+              <span class="p-category">Microservices</span>
+            </div>
+            <a href="https://github.com/KARTHI271/DEVOPS-LEARNING/tree/main/Custom%20Nginx%20Docker%20Image%20%26%20Deployment%20with%20Docker%20Compose" target="_blank" rel="noopener noreferrer" class="github-link-icon" title="View Source on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+
+          <h3>Custom Nginx Docker Image & Docker Compose Stack</h3>
+          <p class="project-description">
+            Engineered tailored lightweight container images with customized Nginx configuration files, static asset optimization, and multi-container lifecycle management via Docker Compose with dedicated network bridging and volume persistence.
+          </p>
+
+          <ul class="project-highlights">
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Multi-Stage Builds:</strong> Stripped unnecessary build dependencies to produce secure, minimal image layers.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Orchestrated Stacks:</strong> Defined port forwards, volumes, and environment variables in declarative Compose syntax.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Custom Reverse Proxy:</strong> Fine-tuned proxy headers and compression for high-throughput HTTP handling.</span>
+            </li>
+          </ul>
+
+          <div class="tech-tags">
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">Docker Compose</span>
+            <span class="tech-pill">Nginx Config</span>
+            <span class="tech-pill">Container Networking</span>
+          </div>
+        </article>
+
+        <!-- Project 7: AWS EC2 & EBS Storage -->
+        <article class="project-card" data-category="cloud-iac">
+          <div class="project-header">
+            <div class="project-badge-group">
+              <span class="p-category">AWS Storage</span>
+              <span class="p-category">Linux Administration</span>
+            </div>
+            <a href="https://github.com/KARTHI271/DEVOPS-LEARNING/tree/main/EC2%20Server%20Deployment%20and%20EBS%20Storage%20Management%20on%20AWS" target="_blank" rel="noopener noreferrer" class="github-link-icon" title="View Source on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+
+          <h3>AWS EC2 Server Deployment & EBS Volume Lifecycle</h3>
+          <p class="project-description">
+            Complete cloud server deployment across Linux (Ubuntu) and Windows Server on AWS. Configured persistent Elastic Block Store (EBS) attachments, partition formatting (ext4/NTFS), mount points, and automated snapshot backup strategies.
+          </p>
+
+          <ul class="project-highlights">
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Block Storage Management:</strong> Dynamic volume resizing, filesystem expansion, and persistent fstab mounting.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Security Posture:</strong> Key pair rotation, IAM instance roles, and strict Security Group ingress isolation.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Cross-Platform Admin:</strong> Linux SSH hardening and Windows PowerShell server administration.</span>
+            </li>
+          </ul>
+
+          <div class="tech-tags">
+            <span class="tech-pill">AWS EC2</span>
+            <span class="tech-pill">AWS EBS</span>
+            <span class="tech-pill">Linux fstab</span>
+            <span class="tech-pill">Storage Management</span>
+            <span class="tech-pill">PowerShell</span>
+          </div>
+        </article>
+
+        <!-- Project 8: 20-Task DevOps Core Lab -->
+        <article class="project-card" data-category="cloud-iac k8s-docker cicd-automation">
+          <div class="project-header">
+            <div class="project-badge-group">
+              <span class="p-category">20 Modules</span>
+              <span class="p-category terraform">Terraform</span>
+              <span class="p-category k8s">Kubernetes</span>
+            </div>
+            <a href="https://github.com/KARTHI271/DevOps" target="_blank" rel="noopener noreferrer" class="github-link-icon" title="View Source on GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </a>
+          </div>
+
+          <h3>The 20-Stage DevOps Engineering Laboratory</h3>
+          <p class="project-description">
+            An extensive repository comprising 20 dedicated technical modules covering the full spectrum of modern DevOps engineering: Linux systems programming, permissions, networking, Bash automation, AWS cloud architecture, Docker lifecycle, Kubernetes orchestration, Jenkins pipelines, Terraform IaC, and monitoring.
+          </p>
+
+          <ul class="project-highlights">
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Tasks 1-4:</strong> Linux internals, file permissions (chmod/chown), networking diagnostics, and Bash automation.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Tasks 5-8:</strong> AWS VPC architecture, EC2 compute, IAM roles, and security policies.</span>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <span><strong>Tasks 11-20:</strong> Docker containerization, Kubernetes pods & services, Jenkins pipelines, Terraform modules & monitoring.</span>
+            </li>
+          </ul>
+
+          <div class="tech-tags">
+            <span class="tech-pill">20 Hands-on Tasks</span>
+            <span class="tech-pill">Linux</span>
+            <span class="tech-pill">AWS</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">Kubernetes</span>
+            <span class="tech-pill">Terraform</span>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <section id="journey">
+    <!-- Skills & Tools Technical Matrix -->
+    <section id="skills">
       <div class="section-header">
-        <h2>Learning journey</h2>
-        <div class="section-tag">Step by step</div>
+        <span class="section-eyebrow">Technical Competencies</span>
+        <h2 class="section-title">Core Skills & Tooling</h2>
+        <p class="section-subtitle">
+          Technologies practiced hands-on in production configurations and lab deployments.
+        </p>
       </div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="phase">Phase 01</div>
-          <h3>Foundation</h3>
-          <p>Linux basics, shell usage, file systems, and system management.</p>
+
+      <div class="skills-grid">
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-icon-wrap">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">Cloud & Infrastructure</h3>
+          </div>
+          <ul class="skill-list">
+            <li class="skill-badge"><span class="dot-indicator"></span>Amazon Web Services (AWS)</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>AWS EC2 & EBS</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>AWS VPC & Subnetting</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>AWS Elastic Load Balancing</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Terraform (HCL)</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Infrastructure as Code</li>
+          </ul>
         </div>
-        <div class="timeline-item">
-          <div class="phase">Phase 02</div>
-          <h3>Version control</h3>
-          <p>Git workflows, GitHub collaboration, and repository management.</p>
+
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-icon-wrap" style="color:var(--cyan); background:rgba(0, 245, 212, 0.1);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">Containers & Kubernetes</h3>
+          </div>
+          <ul class="skill-list">
+            <li class="skill-badge"><span class="dot-indicator"></span>Docker Engine</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Multi-Stage Dockerfiles</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Docker Compose</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Kubernetes (k8s)</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Amazon EKS & eksctl</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>kubectl CLI</li>
+          </ul>
         </div>
-        <div class="timeline-item">
-          <div class="phase">Phase 03</div>
-          <h3>Containers</h3>
-          <p>Docker, image lifecycle, networking, and deployment practices.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="phase">Phase 04</div>
-          <h3>Automation</h3>
-          <p>Jenkins pipelines, infrastructure as code, and cloud-ready workflows.</p>
+
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-icon-wrap" style="color:var(--amber); background:rgba(245, 158, 11, 0.1);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <h3 class="skill-cat-title">CI/CD & OS Administration</h3>
+          </div>
+          <ul class="skill-list">
+            <li class="skill-badge"><span class="dot-indicator"></span>Jenkins Pipelines</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>GitHub & Git VCS</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>GitHub Webhooks</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Linux (Ubuntu / Debian)</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Bash & Shell Scripting</li>
+            <li class="skill-badge"><span class="dot-indicator"></span>Nginx Web Server</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <div class="cta-panel">
-        <div>
-          <h3>Open to DevOps opportunities.</h3>
-          <p>I’m looking to learn, contribute, and grow with a team building reliable systems at scale.</p>
+    <!-- Education Section -->
+    <section id="education">
+      <div class="section-header">
+        <span class="section-eyebrow">Academic Background</span>
+        <h2 class="section-title">Education & Foundation</h2>
+      </div>
+
+      <div class="edu-card">
+        <div class="edu-icon-box">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
         </div>
-        <div class="cta-row" style="margin:0;">
-          <a class="button primary" href="https://github.com/KARTHI271" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="button secondary" href="#top">Back to top</a>
+        <div>
+          <h3>Bachelor’s Degree in Electronics and Communication Engineering</h3>
+          <div class="edu-meta">Engineering Graduate • Core Technical Discipline</div>
+          <p class="edu-desc">
+            Strong foundational understanding of computer networking, operating system architectures, signal communications, hardware-software integration, and distributed computing systems that serve as the backbone for modern cloud and DevOps engineering.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section id="contact">
+      <div class="cta-banner">
+        <div>
+          <h3>Let's Build Reliable Systems Together</h3>
+          <p>
+            I am actively looking for DevOps, SRE, and Cloud Infrastructure opportunities. Whether you need automated CI/CD pipelines, Terraform IaC, or Kubernetes containerization, let’s connect!
+          </p>
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="https://github.com/KARTHI271" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub: KARTHI271
+          </a>
+          <a class="btn btn-secondary" href="mailto:karthisv2701@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            karthisv2701@gmail.com
+          </a>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="container">
-    Built as a hands-on DevOps portfolio to demonstrate learning, automation, and practical systems thinking.
+    <div class="footer-content">
+      <div>
+        <strong>Karthi S V</strong> • DevOps & Cloud Infrastructure Engineer
+      </div>
+      <div class="footer-links">
+        <a href="#top">Back to top ↑</a>
+        <a href="https://github.com/KARTHI271" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:karthisv2701@gmail.com">Email</a>
+      </div>
+    </div>
   </footer>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Terminal Tab Switching
+    const terminalData = {
+      k8s: `
+<p><span class="t-prompt">karthi@eks-cluster:~$</span> <span class="t-cmd">kubectl get pods,svc -n production</span></p>
+<div class="t-res">
+NAME                               READY   STATUS    RESTARTS   AGE<br>
+pod/trend-store-789cfb4d-9v2x      1/1     <span class="t-success">Running</span>   0          42m<br>
+pod/trend-store-789cfb4d-lp4w      1/1     <span class="t-success">Running</span>   0          42m<br>
+pod/mindtrack-app-54cbb6df-x82m    1/1     <span class="t-success">Running</span>   0          2h<br><br>
+NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP<br>
+service/trend-store-svc       <span class="t-info">LoadBalancer</span>   10.100.12.84    <span class="t-cyan">k8s-alb-84920.us-east-1.elb.amazonaws.com</span><br>
+service/mindtrack-svc         <span class="t-info">LoadBalancer</span>   10.100.88.19    <span class="t-cyan">k8s-alb-19402.us-east-1.elb.amazonaws.com</span>
+</div>
+<p><span class="t-prompt">karthi@eks-cluster:~$</span> <span class="t-cmd">kubectl get nodes</span></p>
+<div class="t-res">
+NAME                                            STATUS   ROLES    AGE   VERSION<br>
+ip-10-0-1-142.ec2.internal                      <span class="t-success">Ready</span>    node     4d    v1.29.3-eks<br>
+ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</span>    node     4d    v1.29.3-eks
+</div>`,
+      tf: `
+<p><span class="t-prompt">karthi@aws-iac:~/terraform$</span> <span class="t-cmd">terraform apply -auto-approve</span></p>
+<div class="t-res">
+aws_vpc.production: Refreshing state... [id=vpc-09fa49e81b]<br>
+aws_subnet.public_subnet: Refreshing state... [id=subnet-0814a2]<br>
+aws_internet_gateway.gw: Refreshing state... [id=igw-0df3a1b]<br>
+aws_security_group.jenkins_sg: Refreshing state... [id=sg-0210e39c]<br>
+aws_instance.jenkins_server: Creating...<br>
+aws_instance.jenkins_server: Provisioning with user-data script...<br>
+<span class="t-success">Apply complete!</span> Resources: 4 added, 0 changed, 0 destroyed.<br><br>
+Outputs:<br>
+jenkins_public_ip = "<span class="t-cyan">3.84.192.45</span>"<br>
+eks_cluster_endpoint = "<span class="t-cyan">https://F491E.gr7.us-east-1.eks.amazonaws.com</span>"
+</div>`,
+      docker: `
+<p><span class="t-prompt">karthi@devops-node:~$</span> <span class="t-cmd">docker-compose ps</span></p>
+<div class="t-res">
+NAME                  IMAGE                        COMMAND                  SERVICE      STATUS              PORTS<br>
+trend-store-web       karthi271/trend-store:latest "nginx -g 'daemon of…"   web          <span class="t-success">Up 5 hours</span>          0.0.0.0:80->80/tcp<br>
+mindtrack-client      karthi271/mindtrack:v1.2     "docker-entrypoint.s…"   app          <span class="t-success">Up 5 hours</span>          0.0.0.0:3000->3000/tcp<br>
+jenkins-controller    jenkins/jenkins:lts-jdk17    "/usr/bin/tini -- /u…"   jenkins      <span class="t-success">Up 2 days</span>           0.0.0.0:8080->8080/tcp
+</div>
+<p><span class="t-prompt">karthi@devops-node:~$</span> <span class="t-cmd">docker images</span></p>
+<div class="t-res">
+REPOSITORY              TAG       IMAGE ID       SIZE<br>
+karthi271/trend-store   latest    e8b3941a8421   42.8MB<br>
+karthi271/mindtrack     v1.2      9df193ca4872   56.1MB
+</div>`
+    };
+
+    function switchTerminal(key) {
+      document.querySelectorAll('.terminal-tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('terminal-content').innerHTML = terminalData[key];
+    }
+
+    // Projects Filtering
+    function filterProjects(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (category === 'all') {
+          card.style.display = 'flex';
+        } else {
+          const cats = card.getAttribute('data-category') || '';
+          if (cats.includes(category)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // CI/CD Pipeline Simulator Animation
+    let simulationRunning = false;
+    function runPipelineSimulation() {
+      if (simulationRunning) return;
+      simulationRunning = true;
+      const stages = [1, 2, 3, 4, 5];
+      
+      // Reset stages
+      stages.forEach(s => {
+        const el = document.getElementById(`stage-${s}`);
+        if (el) el.classList.remove('active-stage');
+      });
+
+      let current = 0;
+      const interval = setInterval(() => {
+        if (current > 0) {
+          const prev = document.getElementById(`stage-${stages[current - 1]}`);
+          if (prev) prev.classList.remove('active-stage');
+        }
+        if (current < stages.length) {
+          const el = document.getElementById(`stage-${stages[current]}`);
+          if (el) el.classList.add('active-stage');
+          current++;
+        } else {
+          clearInterval(interval);
+          // Highlight all
+          stages.forEach(s => {
+            const el = document.getElementById(`stage-${s}`);
+            if (el) el.classList.add('active-stage');
+          });
+          simulationRunning = false;
+        }
+      }, 700);
+    }
+  </script>
 </body>
 </html>
