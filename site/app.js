@@ -1,4 +1,4 @@
-﻿    // Terminal Tab Switching
+    // Terminal Tab Switching
     const terminalData = {
       k8s: `
 <p><span class="t-prompt">karthi@eks-cluster:~$</span> <span class="t-cmd">kubectl get pods,svc -n production</span></p>
@@ -35,9 +35,9 @@ eks_cluster_endpoint = "<span class="t-cyan">https://F491E.gr7.us-east-1.eks.ama
 <p><span class="t-prompt">karthi@devops-node:~$</span> <span class="t-cmd">docker-compose ps</span></p>
 <div class="t-res">
 NAME                  IMAGE                        COMMAND                  SERVICE      STATUS              PORTS<br>
-trend-store-web       karthi271/trend-store:latest "nginx -g 'daemon ofâ€¦"   web          <span class="t-success">Up 5 hours</span>          0.0.0.0:80->80/tcp<br>
-mindtrack-client      karthi271/mindtrack:v1.2     "docker-entrypoint.sâ€¦"   app          <span class="t-success">Up 5 hours</span>          0.0.0.0:3000->3000/tcp<br>
-jenkins-controller    jenkins/jenkins:lts-jdk17    "/usr/bin/tini -- /uâ€¦"   jenkins      <span class="t-success">Up 2 days</span>           0.0.0.0:8080->8080/tcp
+trend-store-web       karthi271/trend-store:latest "nginx -g 'daemon of..."   web          <span class="t-success">Up 5 hours</span>          0.0.0.0:80->80/tcp<br>
+mindtrack-client      karthi271/mindtrack:v1.2     "docker-entrypoint.s..."   app          <span class="t-success">Up 5 hours</span>          0.0.0.0:3000->3000/tcp<br>
+jenkins-controller    jenkins/jenkins:lts-jdk17    "/usr/bin/tini -- /u..."   jenkins      <span class="t-success">Up 2 days</span>           0.0.0.0:8080->8080/tcp
 </div>
 <p><span class="t-prompt">karthi@devops-node:~$</span> <span class="t-cmd">docker images</span></p>
 <div class="t-res">
@@ -47,16 +47,21 @@ karthi271/mindtrack     v1.2      9df193ca4872   56.1MB
 </div>`
     };
 
-    function switchTerminal(key) {
-      document.querySelectorAll('.terminal-tab-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById('terminal-content').innerHTML = terminalData[key];
+    function switchTerminal(key, btn) {
+      document.querySelectorAll('.terminal-tab-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = btn || (window.event && window.event.target ? window.event.target.closest('.terminal-tab-btn') : null);
+      if (activeBtn) activeBtn.classList.add('active');
+      const terminalContent = document.getElementById('terminal-content');
+      if (terminalContent && terminalData[key]) {
+        terminalContent.innerHTML = terminalData[key];
+      }
     }
 
     // Projects Filtering
-    function filterProjects(category) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
+    function filterProjects(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = btn || (window.event && window.event.target ? window.event.target.closest('.filter-btn') : null);
+      if (activeBtn) activeBtn.classList.add('active');
 
       const cards = document.querySelectorAll('.project-card');
       cards.forEach(card => {

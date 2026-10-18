@@ -55,7 +55,7 @@
         <div>
           <div class="status-badge">
             <span class="status-pulse"></span>
-            Cloud & DevOps Engineer â€¢ AWS â€¢ K8s â€¢ IaC
+            Cloud &amp; DevOps Engineer &bull; AWS &bull; K8s &bull; IaC
           </div>
 
           <h1>
@@ -112,9 +112,9 @@
             </div>
             <div class="terminal-title">karthi@aws-cloud-bastion:~</div>
             <div class="terminal-tabs">
-              <button class="terminal-tab-btn active" onclick="switchTerminal('k8s')">kubectl</button>
-              <button class="terminal-tab-btn" onclick="switchTerminal('tf')">terraform</button>
-              <button class="terminal-tab-btn" onclick="switchTerminal('docker')">docker</button>
+              <button class="terminal-tab-btn active" onclick="switchTerminal('k8s', this)">kubectl</button>
+              <button class="terminal-tab-btn" onclick="switchTerminal('tf', this)">terraform</button>
+              <button class="terminal-tab-btn" onclick="switchTerminal('docker', this)">docker</button>
             </div>
           </div>
 
@@ -326,10 +326,10 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
 
       <!-- Category Filter Tabs -->
       <div class="filter-bar">
-        <button class="filter-btn active" onclick="filterProjects('all')">All Repositories (8)</button>
-        <button class="filter-btn" onclick="filterProjects('cloud-iac')">Cloud & Terraform (3)</button>
-        <button class="filter-btn" onclick="filterProjects('k8s-docker')">Kubernetes & Containers (3)</button>
-        <button class="filter-btn" onclick="filterProjects('cicd-automation')">CI/CD & Automation (2)</button>
+        <button class="filter-btn active" onclick="filterProjects('all', this)">All Repositories (8)</button>
+        <button class="filter-btn" onclick="filterProjects('cloud-iac', this)">Cloud &amp; Terraform (3)</button>
+        <button class="filter-btn" onclick="filterProjects('k8s-docker', this)">Kubernetes &amp; Containers (3)</button>
+        <button class="filter-btn" onclick="filterProjects('cicd-automation', this)">CI/CD &amp; Automation (2)</button>
       </div>
 
       <div class="projects-grid">
@@ -349,22 +349,22 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
             </a>
           </div>
 
-          <h3>TREND STORE â€” Enterprise CI/CD & IaC Pipeline</h3>
+          <h3>TREND STORE &mdash; Enterprise CI/CD &amp; IaC Pipeline</h3>
           <p class="project-description">
             Complete end-to-end DevOps automation suite. Created AWS custom VPC, subnets, and routing via Terraform; configured an automated Jenkins CI/CD pipeline pulling from GitHub; built and pushed Docker images to DockerHub (<code style="color:var(--cyan)">karthi271/trend-store</code>); and executed rolling updates to Amazon EKS exposed through AWS Load Balancers.
           </p>
 
           <ul class="project-highlights">
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Terraform IaC:</strong> Automated provisioning of VPC, public subnets, Internet Gateways, and Jenkins EC2 instance.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Jenkins CI/CD:</strong> Declarative pipeline handling checkout, Docker container build, test, and registry push.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Kubernetes Orchestration:</strong> Zero-downtime rolling deployments on Amazon EKS with AWS LoadBalancer DNS routing.</span>
             </li>
           </ul>
@@ -394,22 +394,22 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
             </a>
           </div>
 
-          <h3>MINDTRACK â€” Containerized Cloud Microservice on EKS</h3>
+          <h3>MINDTRACK &mdash; Containerized Cloud Microservice on EKS</h3>
           <p class="project-description">
             Multi-tier web application packaged into an optimized Docker container and deployed to an Amazon EKS cluster managed via <code style="color:var(--cyan)">eksctl</code>. Integrated with AWS CodeBuild (<code style="color:var(--cyan)">buildspec.yml</code>) and configured with Kubernetes LoadBalancer services for public DNS traffic distribution.
           </p>
 
           <ul class="project-highlights">
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>EKS Cluster Management:</strong> Node group provisioning, namespace isolation, and pod autoscaling with kubectl.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>AWS CodeBuild:</strong> Automated build specifications, artifact management, and container compilation.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Health Verification:</strong> Production health checks, readiness probes, and LoadBalancer DNS resolution.</span>
             </li>
           </ul>
@@ -446,15 +446,15 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
 
           <ul class="project-highlights">
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Cross-Region Redundancy:</strong> Dual-provider Terraform configurations deploying synchronized servers across continents.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Automated Bootstrap:</strong> User-data scripting injecting automated Nginx installations and custom HTML landing pages.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>State Management:</strong> Terraform state lock, dependency graphs, and clean resource tear-down.</span>
             </li>
           </ul>
@@ -490,15 +490,15 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
 
           <ul class="project-highlights">
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Instant Event Triggers:</strong> Seamless GitHub payload parsing triggering instant parallel build steps.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Automated Testing:</strong> Shell script validation and syntax linting before progression to deploy.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>SMTP Alerting:</strong> Post-build failure and success notifications sent automatically to engineering team.</span>
             </li>
           </ul>
@@ -533,15 +533,15 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
 
           <ul class="project-highlights">
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Cluster Architecture:</strong> Control plane management with high-availability worker nodes in AWS.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Service Routing:</strong> Configured LoadBalancer services to bind AWS ALB endpoints to container pods.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Resilience:</strong> Fault tolerance verification via simulated pod termination and automatic replica regeneration.</span>
             </li>
           </ul>
@@ -576,15 +576,15 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
 
           <ul class="project-highlights">
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Multi-Stage Builds:</strong> Stripped unnecessary build dependencies to produce secure, minimal image layers.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Orchestrated Stacks:</strong> Defined port forwards, volumes, and environment variables in declarative Compose syntax.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Custom Reverse Proxy:</strong> Fine-tuned proxy headers and compression for high-throughput HTTP handling.</span>
             </li>
           </ul>
@@ -618,15 +618,15 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
 
           <ul class="project-highlights">
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Block Storage Management:</strong> Dynamic volume resizing, filesystem expansion, and persistent fstab mounting.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Security Posture:</strong> Key pair rotation, IAM instance roles, and strict Security Group ingress isolation.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Cross-Platform Admin:</strong> Linux SSH hardening and Windows PowerShell server administration.</span>
             </li>
           </ul>
@@ -662,16 +662,16 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
 
           <ul class="project-highlights">
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Tasks 1-4:</strong> Linux internals, file permissions (chmod/chown), networking diagnostics, and Bash automation.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
+              <span class="bullet-check">&#10003;</span>
               <span><strong>Tasks 5-8:</strong> AWS VPC architecture, EC2 compute, IAM roles, and security policies.</span>
             </li>
             <li>
-              <span class="bullet-check">âœ“</span>
-              <span><strong>Tasks 11-20:</strong> Docker containerization, Kubernetes pods & services, Jenkins pipelines, Terraform modules & monitoring.</span>
+              <span class="bullet-check">&#10003;</span>
+              <span><strong>Tasks 11-20:</strong> Docker containerization, Kubernetes pods &amp; services, Jenkins pipelines, Terraform modules &amp; monitoring.</span>
             </li>
           </ul>
 
@@ -776,8 +776,8 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
           </svg>
         </div>
         <div>
-          <h3>Bachelorâ€™s Degree in Electronics and Communication Engineering</h3>
-          <div class="edu-meta">Engineering Graduate â€¢ Core Technical Discipline</div>
+          <h3>Bachelor's Degree in Electronics and Communication Engineering</h3>
+          <div class="edu-meta">Engineering Graduate &bull; Core Technical Discipline</div>
           <p class="edu-desc">
             Strong foundational understanding of computer networking, operating system architectures, signal communications, hardware-software integration, and distributed computing systems that serve as the backbone for modern cloud and DevOps engineering.
           </p>
@@ -791,7 +791,7 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
         <div>
           <h3>Let's Build Reliable Systems Together</h3>
           <p>
-            I am actively looking for DevOps, SRE, and Cloud Infrastructure opportunities. Whether you need automated CI/CD pipelines, Terraform IaC, or Kubernetes containerization, letâ€™s connect!
+            I am actively looking for DevOps, SRE, and Cloud Infrastructure opportunities. Whether you need automated CI/CD pipelines, Terraform IaC, or Kubernetes containerization, let's connect!
           </p>
         </div>
         <div style="display:flex; gap:14px; flex-wrap:wrap;">
@@ -817,10 +817,10 @@ ip-10-0-2-209.ec2.internal                      <span class="t-success">Ready</s
   <footer class="container">
     <div class="footer-content">
       <div>
-        <strong>Karthi S V</strong> • DevOps & Cloud Infrastructure Engineer
+        <strong>Karthi S V</strong> &bull; DevOps &amp; Cloud Infrastructure Engineer
       </div>
       <div class="footer-links">
-        <a href="#top">Back to top ↑</a>
+        <a href="#top">Back to top &uarr;</a>
         <a href="https://github.com/KARTHI271" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="mailto:karthisv2701@gmail.com">Email</a>
       </div>
